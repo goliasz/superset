@@ -41,6 +41,9 @@ RUN apt-get update && \
     chown root:staff /usr/local/bin/superset-* && \
     chown -R superset:superset /home/superset
 
+# Couchbase sqlalchemy dialect
+RUN pip install cockroachdb
+
 # Deploy application
 EXPOSE 8088
 HEALTHCHECK CMD ["curl", "-f", "http://localhost:8088/health"]
